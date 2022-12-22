@@ -13,7 +13,7 @@ body {
     align-items: center;
     flex-flow: column nowrap;
     gap: 10px;
-  
+    height: 150vh;
     overflow: auto;
     padding: 0px;
     position: relative;
