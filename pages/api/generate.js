@@ -54,7 +54,8 @@ const generateAction = async (req, res) => {
   console.log('****SECOND*****', `${secondPromptOutput.text}`)
 
 
-  res.status(200).json({ output:  secondPromptOutput});
+  res.status(200).json({ output:  basePromptOutput});
+  // Cannot output second prompt due to limitations on vercel
   //res.status(200).json({ output: secondPromptOutput });
 
 };
