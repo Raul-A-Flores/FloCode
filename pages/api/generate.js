@@ -9,13 +9,15 @@ const openai = new OpenAIApi(configuration);
 
 const basePromptPrefix =
 `
-Explain what this data structure is and an example of it:
+Explain and describe this Data Structure or Algorithm and give an example:
 
+
+DATA_STRUCTURE/ALGORITHM:
 
 `
 
 const generateAction = async (req, res) => {
-  console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
+ // console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -30,8 +32,12 @@ const generateAction = async (req, res) => {
   //${req.body.userInput}
   // Explain further on the information given from : ${basePromptOutput.text}
   `
+  Data Structure/Algorithm: ${req.body.userInput}  
 
-   Give an example of the most popular leetcode question relating to: ${req.body.userInput}
+  In numbered list format, give the steps required to create the data structure or algorithm from ${req.body.userInput} and a visual representation. Then give an explation based on the data structure/algorithm below:
+
+
+  data structure/algorithm: ${basePromptOutput.text}
 
   `
   
@@ -39,12 +45,16 @@ const generateAction = async (req, res) => {
     model: 'text-davinci-003',
     prompt: `${secondPrompt}`,
     temperature: 0.5,
-    max_tokens: 1250,
+    max_tokens: 1300,
   });
   
   const secondPromptOutput = secondPromptCompletion.data.choices.pop();
 
-  res.status(200).json({ output: basePromptOutput, secondPromptOutput });
+  console.log('****BASE*****', `${basePromptOutput.text}`)
+  console.log('****SECOND*****', `${secondPromptOutput.text}`)
+
+
+  res.status(200).json({ output:  secondPromptOutput});
   //res.status(200).json({ output: secondPromptOutput });
 
 };

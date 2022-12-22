@@ -8,12 +8,12 @@ body {
 
 .root {
     display: flex;
-    background-color: lightgray;
+    background-image: url('https://imagesflores.s3.us-east-2.amazonaws.com/3398463.jpeg');
     place-content: center flex-start;
     align-items: center;
     flex-flow: column nowrap;
     gap: 10px;
-    height: 100vh;
+  
     overflow: auto;
     padding: 0px;
     position: relative;
@@ -97,7 +97,7 @@ body {
     overflow: hidden;
     padding: 20px;
     position: relative;
-    width: 300px;
+    width: 500px;
     max-width: 1200px;
     will-change: transform;
     overflow: auto;
@@ -270,7 +270,7 @@ textarea {
 
 .output {
     place-content: center flex-start;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex: 0 0 auto;
     flex-flow: column nowrap;
@@ -321,7 +321,7 @@ textarea {
 }
 
 .output-content p {
-    text-align: center;
+    text-align: left;
     white-space: pre-line;
     color: black;
 }
